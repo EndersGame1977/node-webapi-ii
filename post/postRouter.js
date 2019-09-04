@@ -67,8 +67,9 @@ router.delete("/:id", (req, res) => {
 
 // Put
 router.put("/:id", (req, res) => {
-  const { title, contents } = req.body;
-  db.update(req.param.id, { title, contents })
+  const body = req.body;
+  const { id } = req.params;
+  db.update(id, body)
     .then(post => {
       res.status(201).json(post);
     })
